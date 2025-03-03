@@ -41,6 +41,8 @@ dependencies:
   flutter_native_splash:
   shared_preferences: ^2.5.2
   provider: ^6.1.2
+  cached_network_image: ^3.4.1
+  timeago: ^3.7.0
 
 dev_dependencies:
   flutter_test:

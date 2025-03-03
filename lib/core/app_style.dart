@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_application/core/colors_manager.dart';
-//size:sp r
+//size:sp
+// size r
 //height:h
 //width:w
 //radius:r
@@ -24,6 +25,11 @@ class AppStyle {
 fontSize: 24.sp,
             color: ColorsManager.black
       ),
+        headlineLarge: TextStyle(
+            fontWeight:FontWeight.w700,
+            fontSize: 24.sp,
+            color: ColorsManager.black
+        ),
         headlineMedium: TextStyle(
             fontWeight:FontWeight.w600,
             fontSize: 20.sp,
@@ -42,7 +48,12 @@ fontSize: 24.sp,
         bodySmall: TextStyle(
             fontWeight:FontWeight.w500,
             fontSize: 12.sp,
-            color: ColorsManager.black
+            color: Colors.grey
+        ),
+        titleLarge: TextStyle(
+            fontWeight:FontWeight.w700,
+            fontSize: 24.sp,
+            color: ColorsManager.white
         ),
 
   ),
@@ -76,7 +87,7 @@ fontSize: 24.sp,
   backgroundColor: Colors.transparent,
   centerTitle: true,
   titleTextStyle: TextStyle(
-  color: ColorsManager.black,
+  color: ColorsManager.white,
   fontSize:20 .sp,
   fontWeight: FontWeight.w500,
   )
@@ -103,10 +114,22 @@ fontSize: 24.sp,
   color: ColorsManager.white
   ),
   bodySmall: TextStyle(
-  fontWeight:FontWeight.w500,
-  fontSize: 12.sp,
-  color: ColorsManager.white
-  ),),
+  fontWeight:FontWeight.bold,
+  fontSize: 13.sp,
+  color: Colors.grey
+  ),
+    titleLarge: TextStyle(
+        fontWeight:FontWeight.w700,
+        fontSize: 24.sp,
+        color: ColorsManager.black
+    ),
+    headlineLarge: TextStyle(
+        fontWeight:FontWeight.w700,
+        fontSize: 24.sp,
+        color: ColorsManager.white
+    ),
+
+  ),
     colorScheme: ColorScheme.dark(
         primary:ColorsManager.white,
         secondary: ColorsManager.black,

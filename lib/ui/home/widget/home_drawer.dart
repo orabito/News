@@ -6,15 +6,13 @@ import 'package:gap/gap.dart';
 import 'package:news_application/core/assets_manager.dart';
 import 'package:news_application/core/strings_manager.dart';
 import 'package:provider/provider.dart';
-
-import '../../../core/prefs_helper.dart';
 import '../../../provider/theme_provider.dart';
 
 
 
 class HomeDrawer extends StatefulWidget {
-  const HomeDrawer({super.key});
-
+  const HomeDrawer({super.key, required this.backToHome});
+ final void Function() backToHome;
   @override
   State<HomeDrawer> createState() => _HomeDrawerState();
 }
@@ -65,6 +63,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 InkWell(
+                  onTap: () {
+                    widget.backToHome();
+                    Navigator.pop(context);
+                  } ,
                   child: Row(
                     children: [
                       SvgPicture.asset(
