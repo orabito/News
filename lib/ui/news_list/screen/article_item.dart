@@ -4,111 +4,122 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_application/core/strings_manager.dart';
+import 'package:news_application/models/article_response/Article.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-main() {
-  final fifteenAgo = DateTime.now().subtract(Duration(minutes: 15));
-
-  print(timeago.format(fifteenAgo)); // 15 minutes ago
-  print(timeago.format(fifteenAgo, locale: 'en_short')); // 15m
-  print(timeago.format(fifteenAgo, locale: 'es')); // hace 15 minutos
-}
 class ArticleItem extends StatelessWidget {
-  const ArticleItem({super.key});
+  const ArticleItem({super.key, required this.article});
+
+  final Article article;
 
   @override
   Widget build(BuildContext context) {
-    final fifteenAgo = DateTime.now().subtract(Duration(minutes: 15));
+    final fifteenAgo = DateTime.parse(article.publishedAt ?? "");
     return InkWell(
       onTap: () {
-        showDialog(context: context,
-            builder: (context) => AlertDialog (
-              alignment: Alignment.bottomCenter,
-              insetPadding: REdgeInsets.all(16),
-              contentPadding: REdgeInsets.all(8),
-              backgroundColor: Theme.of(context).colorScheme.primary,
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            alignment: Alignment.bottomCenter,
+            insetPadding: REdgeInsets.all(16),
+            contentPadding: REdgeInsets.all(8),
+            backgroundColor: Theme.of(context).colorScheme.primary,
             content: Container(
               width: ScreenUtil().screenWidth,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    ClipRRect(
-                        borderRadius: BorderRadius.circular(16) ,
-                        child: CachedNetworkImage(
-                          imageUrl:                 "https://www.vuelio.com/uk/wp-content/uploads/2019/02/Breaking-News-700x400.jpg",
-                          height: 220.h,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => Center(child: CircularProgressIndicator(color: Theme.of(context).colorScheme.primary,)),
-                          errorWidget: (context, url, error) =>Icon(Icons.error_sharp,size: 40.sp,) ,
-
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: CachedNetworkImage(
+                        imageUrl: article.urlToImage ??
+                            "https://www.vuelio.com/uk/wp-content/uploads/2019/02/Breaking-News-700x400.jpg",
+                        height: 220.h,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => Center(
+                            child: CircularProgressIndicator(
+                          color: Theme.of(context).colorScheme.primary,
                         )),
-                    SizedBox(height: 8.h,),
-                    Text(
-                      StringsManager.someNews.tr(),
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                       color:  Theme.of(context).colorScheme.secondary,
-                      ),
-                      maxLines: 5,
-                      overflow:TextOverflow.ellipsis ,
-                    ),
-                    SizedBox(height: 8.h,),
-                    ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.r)
-                          ),
-                          padding: REdgeInsets.all(16),
-                          backgroundColor: Theme.of(context).colorScheme.secondary,
-
+                        errorWidget: (context, url, error) => Icon(
+                          Icons.error_sharp,
+                          size: 40.sp,
                         ),
-                        onPressed: (){},
-                        child:Text(
-                         StringsManager.viewAll.tr(),
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color:  Theme.of(context).colorScheme.primary,
-                          ),
-                        ))
-
-                  ],
-                ),
-              ) ,
-            ),);
+                      )),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  Text(
+                    article.description ?? StringsManager.someNews.tr(),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
+                    maxLines: 5,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.r)),
+                        padding: REdgeInsets.all(16),
+                        backgroundColor:
+                            Theme.of(context).colorScheme.secondary,
+                      ),
+                      onPressed: () {
+                        //assignment
+                      },
+                      child: Text(
+                        StringsManager.viewAll.tr(),
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                      ))
+                ],
+              ),
+            ),
+          ),
+        );
       },
       child: Container(
         padding: REdgeInsets.all(8),
-      margin: REdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-        border: Border.all(
-      color: Theme.of(context).colorScheme.primary
-          ,width: 2.w
-        ),
-        borderRadius: BorderRadius.circular(16),
-      color: Theme.of(context).colorScheme.secondary
-
-      ),
-        child:
-        Column(
+        margin: REdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+            border: Border.all(
+                color: Theme.of(context).colorScheme.primary, width: 2.w),
+            borderRadius: BorderRadius.circular(16),
+            color: Theme.of(context).colorScheme.secondary),
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-                borderRadius: BorderRadius.circular(16) ,
+                borderRadius: BorderRadius.circular(16),
                 child: CachedNetworkImage(
-                  imageUrl:                 "https://www.vuelio.com/uk/wp-content/uploads/2019/02/Breaking-News-700x400.jpg",
+                  imageUrl: article.urlToImage ??
+                      "https://www.vuelio.com/uk/wp-content/uploads/2019/02/Breaking-News-700x400.jpg",
                   height: 220.h,
                   fit: BoxFit.cover,
                   width: double.infinity,
-                  placeholder: (context, url) => Center(child: CircularProgressIndicator(color: Theme.of(context).colorScheme.primary,)),
-                  errorWidget: (context, url, error) =>Icon(Icons.error_sharp,size: 40.sp,) ,
-
+                  placeholder: (context, url) => Center(
+                      child: CircularProgressIndicator(
+                    color: Theme.of(context).colorScheme.primary,
+                  )),
+                  errorWidget: (context, url, error) => Icon(
+                    Icons.error_sharp,
+                    size: 40.sp,
+                  ),
                 )),
-            SizedBox(height: 10.h,),
+            SizedBox(
+              height: 10.h,
+            ),
             Text(
-              StringsManager.someNews.tr(),
+              article.title ?? StringsManager.someNews.tr(),
               style: Theme.of(context).textTheme.bodyLarge,
               maxLines: 2,
-              overflow:TextOverflow.ellipsis ,
+              overflow: TextOverflow.ellipsis,
             ),
             SizedBox(
               height: 10.h,
@@ -118,20 +129,23 @@ class ArticleItem extends StatelessWidget {
                 Expanded(
                   flex: 5,
                   child: Text(
-                    StringsManager.someNews.tr(),
+                    "By: ${article.author ?? ""}",
                     style: Theme.of(context).textTheme.bodySmall,
                     maxLines: 2,
-                    overflow:TextOverflow.ellipsis ,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 Expanded(
                   flex: 2,
                   child: Text(
-                    textAlign:TextAlign.end ,
-                 timeago.format(fifteenAgo, locale:context.locale.languageCode ),
+                    textAlign: TextAlign.end,
+                    DateTime.now().difference(fifteenAgo).inDays < 2
+                        ? timeago.format(fifteenAgo,
+                            locale: context.locale.languageCode)
+                        : article.publishedAt ?? "",
                     style: Theme.of(context).textTheme.bodySmall,
                     maxLines: 2,
-                    overflow:TextOverflow.ellipsis ,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],

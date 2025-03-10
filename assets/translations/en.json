@@ -4,12 +4,19 @@
   "someNews": "Here is Some News For You",
   "viewAll": "View All",
   "sports": "Sports",
+  "sportsId": "sports",
   "health": "Health",
+  "healthId": "health",
   "science": "Science",
+  "scienceId": "science",
   "technology": "Technology",
+  "technologyId": "technology",
   "entertainment": "Entertainment",
+  "entertainmentId": "entertainment",
   "business": "Business",
+  "businessId": "business",
   "general": "General",
+  "generalId": "general",
   "newsApp": "News App",
   "goToHome": "Go To Home",
   "dark": "Dark",
@@ -18,5 +25,7 @@
   "language": "Language",
   "english": "English",
   "search": "Search",
-  "arabic": "Arabic"
+  "arabic": "Arabic",
+  "tryAgain": "Try Again",
+  "no_article_found": "No article found"
 }

@@ -46,7 +46,7 @@ CategoryModel? selectedCategory;
       ],
       ),
 
-body: isShowNewsList?NewsListWidget(): CategoriesWidget(onTap: onCategorySelected,),
+body: isShowNewsList?NewsListWidget( selectedCategory!): CategoriesWidget(onTap: onCategorySelected,),
     );
   }
 

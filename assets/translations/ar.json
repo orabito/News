@@ -4,12 +4,19 @@
   "someNews": "إليك بعض الأخبار",
   "viewAll": "عرض الكل",
   "sports": "رياضة",
+  "sportsId": "الرياضة",
   "health": "الصحة",
+  "healthId": "الصحة",
   "science": "علوم",
+  "scienceId": "العلوم",
   "technology": "تكنولوجيا",
+  "technologyId": "التكنولوجيا",
   "entertainment": "ترفيه",
+  "entertainmentId": "الترفيه",
   "business": "أعمال",
+  "businessId": "أعمال",
   "general": "عام",
+  "generalId": "العام",
   "newsApp": "تطبيق الأخبار",
   "goToHome": "الذهاب إلى الرئيسية",
   "dark": "داكن",
@@ -18,7 +25,7 @@
   "language": "اللغة",
   "english": "الإنجليزية",
   "search": "بحث",
-  "arabic": "العربية"
-
-
+  "arabic": "العربية",
+  "tryAgain": "حاول مجددًا",
+  "no_article_found": "لم يتم العثور على مقال"
 }
