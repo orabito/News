@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:news_application/core/remote/api_manager.dart';
 import 'package:news_application/core/strings_manager.dart';
 import 'package:news_application/models/category_model.dart';
 import 'package:news_application/ui/news_list/screen/news_list_view_model.dart';

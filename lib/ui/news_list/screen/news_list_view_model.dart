@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_application/core/remote/api_manager.dart';
-import 'package:news_application/models/article_response/Article.dart';
 import 'package:news_application/models/sources_response/Sources.dart';
 
 

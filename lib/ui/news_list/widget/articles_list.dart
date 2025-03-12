@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:news_application/core/remote/api_manager.dart';
 import 'package:news_application/core/reusable_components/EmptyNotificationsScreen.dart';
 import 'package:news_application/models/sources_response/Sources.dart';
 import 'package:news_application/ui/news_list/widget/article_item.dart';
@@ -10,7 +9,6 @@ import 'package:news_application/ui/news_list/widget/articles_view_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/strings_manager.dart';
-import '../../../models/article_response/Article.dart';
 
 class ArticlesList extends StatefulWidget {
   const ArticlesList({super.key, required this.source,});
