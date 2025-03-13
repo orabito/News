@@ -71,6 +71,7 @@ class ArticleItem extends StatelessWidget {
                       ),
                       onPressed: () {
                         //assignment
+
                       },
                       child: Text(
                         StringsManager.viewAll.tr(),
