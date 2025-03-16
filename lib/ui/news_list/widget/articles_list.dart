@@ -23,7 +23,7 @@ class _ArticlesListState extends State<ArticlesList> {
   @override
   Widget build(BuildContext context) {
     // var language=context.locale.languageCode;
-    return BlocProvider(create: (_) => ArticlesViewModel()..getArticle(widget.source.name!,context.locale.languageCode),
+    return BlocProvider(create: (_) => ArticlesViewModel()..getArticle(widget.source.id!,context.locale.languageCode),
     child: BlocBuilder<ArticlesViewModel,ArticlesState>(builder: (context, state) {
       if(state is ArticleLoadingState){
         return Center (

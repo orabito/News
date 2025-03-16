@@ -1,10 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_application/core/app_style.dart';
 import 'package:news_application/core/prefs_helper.dart';
 import 'package:news_application/provider/theme_provider.dart';
 import 'package:news_application/ui/home/screen/home_screen.dart';
+import 'package:news_application/ui/search/screen/search_screen.dart';
+import 'package:news_application/ui/search/screen/search_view_model.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -51,6 +54,8 @@ class MyApp extends StatelessWidget {
           initialRoute: HomeScreen.routeName ,
           routes: {
             HomeScreen.routeName:(_)=>HomeScreen(),
+            SearchScreen.routeName:(_)=>BlocProvider(create: (context) => SearchViewModel(),
+        child: SearchScreen())
           },
 
 
