@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_application/core/remote/api_manager.dart';
 import 'package:news_application/data/models/sources_response/Sources.dart';
 import 'package:news_application/data/repo/sources_repo.dart';
 
