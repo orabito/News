@@ -1,10 +1,11 @@
+import 'package:injectable/injectable.dart';
 import 'package:news_application/core/remote/api_manager.dart';
 import 'package:news_application/data/data_source/sources_data_source.dart';
 import 'package:news_application/data/models/sources_response/sources_response.dart';
-
+@Injectable(as: SourcesDataSource)
 class SourcesApiDatasourceImpl extends SourcesDataSource {
   ApiManager apiManager;
-
+@factoryMethod
   SourcesApiDatasourceImpl(this.apiManager);//constructor  injection this way best one but the best of the best it's (< Di >)
   ///anther way late ApiManager apiManager  SourcesApiDatasourceImpl()=>we have her coupling
   ///{ apiManager=ApiManager() =>but we have her problem  because

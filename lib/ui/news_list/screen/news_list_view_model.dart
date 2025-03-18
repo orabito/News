@@ -1,9 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:news_application/data/models/sources_response/Sources.dart';
 import 'package:news_application/data/repo/sources_repo.dart';
-
+@injectable
 class NewsListViewModel extends Cubit<NewsState> {
   SourcesRepo  sourcesRepo;
+  @factoryMethod
   NewsListViewModel(this.sourcesRepo):super(NewsLoadingState()) ;
   getSources(String categoryId,String language)async{
     try {

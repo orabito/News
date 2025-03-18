@@ -10,10 +10,13 @@ import 'package:news_application/ui/search/screen/search_screen.dart';
 import 'package:news_application/ui/search/screen/search_view_model.dart';
 import 'package:provider/provider.dart';
 
+import 'core/di/di.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   PrefsHelper.init();
   await ScreenUtil.ensureScreenSize();
+  configureDependencies();
   await EasyLocalization.ensureInitialized();
   runApp(EasyLocalization(
       fallbackLocale: Locale("en"),

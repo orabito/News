@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 import 'package:news_application/core/remote/api_constants.dart';
 import 'package:news_application/data/models/article_response/Article_response.dart';
 import 'package:news_application/data/models/sources_response/sources_response.dart';
 
-
+@singleton
 class ApiManager {
 
 

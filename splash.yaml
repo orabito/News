@@ -6,7 +6,7 @@ flutter_native_splash:
 
   image: assets/images/icon.png
 
-  branding:  assets/images/Group 2.png
+
 
 
 
@@ -38,8 +38,9 @@ flutter_native_splash:
   # 768 pixels in diameter.  To fit a 1152x1152 image within a circle with a 768 diameter, simply
   # ensure that the most important design elements of your image are placed within a circular area
   # with a 768 diameter at the center of the 1152x1152 canvas.
-   image: assets/images/icon.png
-
+   image: assets/images/journalism.png
+   branding:  assets/images/Group 2.png
+   branding_dark: assets/images/dark_brand.png
   # Splash screen background color.
    color: "#FFFFFF"
 
@@ -83,9 +84,10 @@ flutter_native_splash:
   #background_image_dark_ios: "assets/dark-background-ios.png"
   #background_image_web: "assets/background-web.png"
   #background_image_dark_web: "assets/dark-background-web.png"
-  #branding_android: assets/brand-android.png
+  branding_android: assets/images/Group 2.png
   #branding_bottom_padding_android: 24
-  #branding_dark_android: assets/dart_dark-android.png
+#  branding_dark_android: assets/images/dark_branding.png
+
   #branding_ios: assets/brand-ios.png
   #branding_bottom_padding_ios: 24
   #branding_dark_ios: assets/dart_dark-ios.png
