@@ -30,12 +30,14 @@ class _SearchScreenState extends State<SearchScreen> {
   }
   void _onScroll() {
     if (_scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent - 200) {
+        _scrollController.position.maxScrollExtent - 50) {
       context.read<SearchViewModel>().getArticle(
         _searchControllerText.text,
         loadMore: true,
+
       );
     }
+
   }
 
   @override
@@ -69,6 +71,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     onSubmitted: (value) async {
 
           if (value.isEmpty) return;
+          _scrollController.jumpTo(0);
           context.read<SearchViewModel>().getArticle(value);                    },
                     decoration: InputDecoration(
 
@@ -147,11 +150,16 @@ class _SearchScreenState extends State<SearchScreen> {
 
                 }
                 else if(state is EmptySearchState){
-                return  EmptyNotificationsScreen(
-                    onTab: (){
+                return  SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height - 200,
+                    child: EmptyNotificationsScreen(
+                      onTab: (){
 
-                    },
-                  );
+                      },
+                    ),
+                  ),
+                );
                 }
                 else if(state is SuccessSearchState) {
                   return SliverList(
@@ -163,8 +171,9 @@ class _SearchScreenState extends State<SearchScreen> {
                             child: ArticleItem(article: state.article[index]),
                           );
                         }
-                        return state.hasMore
-                            ? SizedBox(
+                        return  state.isLoadingMore
+                            ?
+                        SizedBox(
                           width: 200.0.w,
                           height: 100.0.h,
                           child:
@@ -185,7 +194,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         )
 
 
-                            : Padding(
+                            :state.hasMore? SizedBox.shrink():
+                        Padding(
                           padding: EdgeInsets.all(16.r),
                           child: Center(
                             child: Text(StringsManager.noArticleFound.tr()
@@ -199,6 +209,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         );
                       },
                       childCount: state.article.length + 1,
+
                     ),
                   );
 
@@ -212,11 +223,14 @@ class _SearchScreenState extends State<SearchScreen> {
 
                 }
 
-                return SliverFillRemaining(
-                  child: EmptyNotificationsScreen(
-                    onTab: (){
+                return SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height - 200,
+                    child: EmptyNotificationsScreen(
+                      onTab: (){
 
-                    },
+                      },
+                    ),
                   ),
                 );
 

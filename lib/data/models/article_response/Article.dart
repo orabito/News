@@ -1,5 +1,6 @@
 
-import 'package:news_application/models/sources_response/Sources.dart';
+
+import 'package:news_application/data/models/sources_response/Sources.dart';
 
 class Article {
   Article({

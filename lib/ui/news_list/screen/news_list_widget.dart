@@ -2,8 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_application/core/remote/api_manager.dart';
 import 'package:news_application/core/strings_manager.dart';
-import 'package:news_application/models/category_model.dart';
+import 'package:news_application/data/data_source_impl/sources_api_dataSource_impl.dart';
+import 'package:news_application/data/models/category_model.dart';
+import 'package:news_application/data/repo_impl/sources_repo_impl.dart';
+
 import 'package:news_application/ui/news_list/screen/news_list_view_model.dart';
 import 'package:news_application/ui/news_list/widget/articles_list.dart';
 
@@ -21,8 +25,14 @@ class _NewsListWidgetState extends State<NewsListWidget> {
   Widget build(BuildContext context) {
     return
       BlocProvider(
-      create: (_) => NewsListViewModel()
-        ..getSources(widget.category.id, context.locale.languageCode),
+      create: (_) => NewsListViewModel(
+        SourcesRepoImpl(
+          SourcesApiDatasourceImpl(
+
+            ApiManager(),
+          ),
+        ),
+      )..getSources(widget.category.id, context.locale.languageCode),
       child: BlocBuilder<NewsListViewModel, NewsState>(
         builder: (context, state) {
           if (state is NewsLoadingState) {

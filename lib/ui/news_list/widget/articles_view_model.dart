@@ -1,15 +1,28 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_application/core/remote/api_manager.dart';
-import 'package:news_application/models/article_response/Article.dart';
+import 'package:news_application/data/data_source/articles_dataSource.dart';
+import 'package:news_application/data/data_source_impl/articles_api_dataSource_impl.dart';
+import 'package:news_application/data/models/article_response/Article.dart';
+import 'package:news_application/data/repo/articles_repo.dart';
+import 'package:news_application/data/repo_impl/articles_repo_impl.dart';
 
 class ArticlesViewModel extends Cubit<ArticlesState>{
-  ArticlesViewModel():super(ArticleLoadingState());
+late  ArticlesRepo articlesRepo;
+  ArticlesViewModel():super(ArticleLoadingState()){
+    ApiManager apiManager=ApiManager();
+    ArticlesDatasource datasource=ArticlesApiDatasourceImpl(apiManager);
+    articlesRepo=ArticlesRepoImpl(datasource);
+    //Di=>creational design patterns
+    //singleton for api manger i gust want one object
+    //factory method
+    //builder
+  }
   getArticle(String sources,String language) async {
 
 
 try {
   emit(ArticleLoadingState());
-  var response=  await  ApiManager.getArticles(sources, language);
+  var response=  await articlesRepo.getArticles(sources, language);
   if(response.message=="error"){
     emit(ArticleErrorState(response.message!));
   }else{

@@ -1,20 +1,22 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_application/core/remote/api_manager.dart';
-import 'package:news_application/models/sources_response/Sources.dart';
+import 'package:news_application/data/models/sources_response/Sources.dart';
+import 'package:news_application/data/repo/sources_repo.dart';
 
 class NewsListViewModel extends Cubit<NewsState> {
-  NewsListViewModel():super(NewsLoadingState()) ;
-  getSources(String category,String language)async{
+  SourcesRepo  sourcesRepo;
+  NewsListViewModel(this.sourcesRepo):super(NewsLoadingState()) ;
+  getSources(String categoryId,String language)async{
     try {
       //handel loading7
       emit(NewsLoadingState());
-      var response=await ApiManager.getSources(category, language);
-      if(response?.status=="error"){
+      var response=await sourcesRepo.getSources(categoryId, language)  ;
+      if(response.status=="error"){
         //handel server error
-        emit(NewsErrorState(response!.message!));
+        emit(NewsErrorState(response.message!));
       }else{
         //handel success source from api
-        emit(NewsSuccessState(response!.sources!));
+        emit(NewsSuccessState(response.sources!));
       }
     } on Exception catch (e) {
       //handel ex error

@@ -14,38 +14,39 @@ class EmptyNotificationsScreen extends StatefulWidget {
 class _EmptyNotificationsScreenState extends State<EmptyNotificationsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              const Spacer(flex: 2),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: SvgPicture.string(
-                    noNotificationIllistration,
-                    fit: BoxFit.scaleDown,
-                  ),
-                ),
-              ),
-              const Spacer(flex: 2),
-              ErrorInfo(
-                title: "Empty Article",
-                description:
-                StringsManager.noArticleFound.tr(),                // button: you can pass your custom button,
-                btnText: StringsManager.tryAgain.tr(),
-                press: () {
-                  widget.onTab();
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+    return
+
+       Center(
+         child: Padding(
+           padding: const EdgeInsets.all(16),
+           child: Column(
+               mainAxisAlignment: MainAxisAlignment.center,
+             children: [
+               const Spacer(flex: 2),
+               SizedBox(
+                 width: MediaQuery.of(context).size.width * 0.8,
+                 child: AspectRatio(
+                   aspectRatio: 1,
+                   child: SvgPicture.string(
+                     noNotificationIllistration,
+                     fit: BoxFit.scaleDown,
+                   ),
+                 ),
+               ),
+               const Spacer(flex: 2),
+               ErrorInfo(
+                 title: "Empty Article",
+                 description:
+                 StringsManager.noArticleFound.tr(),                // button: you can pass your custom button,
+                 btnText: StringsManager.tryAgain.tr(),
+                 press: () {
+                   widget.onTab();
+                 },
+               ),
+             ],
+           ),
+         ),
+
     );
   }
 }

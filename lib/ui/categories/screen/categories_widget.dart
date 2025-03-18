@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:news_application/core/strings_manager.dart';
-import 'package:news_application/models/category_model.dart';
+import 'package:news_application/data/models/category_model.dart';
 import 'package:news_application/ui/categories/widget/category_item.dart';
 
 class CategoriesWidget extends StatelessWidget {

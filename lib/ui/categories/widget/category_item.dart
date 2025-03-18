@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:news_application/core/strings_manager.dart';
+import 'package:news_application/data/models/category_model.dart';
 
 
-import 'package:news_application/models/category_model.dart';
 class CategoryItem extends StatelessWidget {
   const CategoryItem({super.key,required this.categoryModel,required this.showNewsListWidget});
 final CategoryModel categoryModel;

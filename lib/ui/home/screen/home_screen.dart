@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_application/core/assets_manager.dart';
 import 'package:news_application/core/strings_manager.dart';
-import 'package:news_application/models/category_model.dart';
+import 'package:news_application/data/models/category_model.dart';
+
 import 'package:news_application/ui/categories/screen/categories_widget.dart';
 import 'package:news_application/ui/news_list/screen/news_list_widget.dart';
 
